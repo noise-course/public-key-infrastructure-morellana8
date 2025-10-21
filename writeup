@@ -1,0 +1,15 @@
+# Server Analysis Write-up -- Miguel Orellana
+
+## Methodology
+
+To do the HTTP part of the task, I simply created a server through python and made it serve an HTML file that I quickly created. I tracked the information I got with Wireshark and filtered the contents to see the http information. I then followed the TCP stream of the HTTP file and that led me to be able to see the information of the file in plain text. 
+
+Now to do the HTTPS part, I created certificates and ran the HTTPS server. With that I was able to search through the information I got through wireshark just to be met with a bunch of information on "handshakes" between server and client. 
+
+## Answers to questions
+
+HTTP is very insecure since I could easily see what information was inside of the HTML file that was in the server through unencrypted means. By simply filtering the information I am seeing in the packet trace to just HTTP, I was able to see all the contents of the file just through Wireshark. Becasue HTTP is unencrypted, every piece of information that is referred to or accessed is seen in plain text in the packet trace.
+
+You cannot obtain a certificate from a trusted CA for localhost because public CAs only issue certificates for publicly accessible domain names that they can verify ownership of.
+
+With the change to HTTPS, everything is encrypted. The most I could find in the server information was simply handshakes between the client and the server. No information about the file or any information about the trasaction of information could be seen anywhere. 
